@@ -1,0 +1,5 @@
+.env
+.venv/
+.ipynb_checkpoints/
+outputs/
+main.executed.ipynb
