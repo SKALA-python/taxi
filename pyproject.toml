@@ -4,8 +4,10 @@ version = "0.1.0"
 description = "Local environment for the taxi analysis notebook"
 requires-python = ">=3.11"
 dependencies = [
+    "fastparquet>=2026.5.0",
     "jupyter>=1.1.1",
     "pandas>=3.0.5",
+    "pyarrow>=25.0.0",
     "python-dotenv>=1.1.1",
 ]
 
