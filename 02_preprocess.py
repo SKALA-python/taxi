@@ -52,9 +52,12 @@ MONTH_END = pd.Timestamp("2026-06-01")
 #   6시간 초과는 963건뿐이라 느슨하게 잡아도 노이즈 유입이 미미하다.
 DUR_MIN, DUR_MAX = 1.0, 360.0
 
+# DIST_MIN=0.1마일(약 160m): 거리 자체는 유효하나, 거리로 나누는 지표
+#   (fare_per_mile 등)에서 분모가 0에 가까워 값이 폭발한다.
+#   0.1마일 미만 18,533건(0.48%) 제거 시 fare_per_mile 평균 $18.84 → $8.78.
 # DIST_MAX=100마일: 맨해튼에서 100마일이면 필라델피아 근처다. 그 이상은
-#   GPS 오류로 판단. 원본 최대값이 307,491마일(지구 12바퀴)로 명백한 오류다.
-DIST_MAX = 100.0
+#   GPS 오류로 판단. 원본 최대값이 307,491마일(지구 12바퀴)로 명백한 오류다.
+DIST_MIN, DIST_MAX = 0.1, 100.0
 
 # SPEED_MAX=80mph: 뉴욕 지역 최고 제한속도(고속도로 65mph)를 여유 있게
 #   상회하는 값. 이를 넘으면 거리 또는 시간 기록 중 하나가 잘못된 것이다.
@@ -156,6 +159,7 @@ drop(df.trip_duration_min > DUR_MAX, f"운행시간 > {DUR_MAX / 60:.0f}시간")
 # 거리 0: 미터기가 거리를 못 잡은 행. 요금은 있으나 "어디서 어디로"라는
 # 이동 정보가 없어 거리·속도·단가 분석 어디에도 쓸 수 없다.
 drop(df.trip_distance <= 0, "trip_distance <= 0")
+drop(df.trip_distance < DIST_MIN, f"trip_distance < {DIST_MIN}mi")
 drop(df.trip_distance > DIST_MAX, f"trip_distance > {DIST_MAX:.0f}mi")
 
 # 음수 요금: 실제 운행이 아니라 앞선 트립을 취소·환불한 회계 조정 행이다.
