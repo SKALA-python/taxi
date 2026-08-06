@@ -28,7 +28,7 @@ SRC = "data/yellow_tripdata_2026-05.csv"
 # 변환 없이 유지할 수 있다(결측 규모를 정확히 세기 위해 중요).
 dtypes = {
     "VendorID": "Int16", "passenger_count": "Int16", "trip_distance": "float32",
-    "RatecodeID": "Int16", "store_and_fwd_flag": "category",
+    "RatecodeID": "Int16", "store_and_fwd_flag": "object",
     "PULocationID": "Int16", "DOLocationID": "Int16", "payment_type": "Int16",
     "fare_amount": "float32", "extra": "float32", "mta_tax": "float32",
     "tip_amount": "float32", "tolls_amount": "float32",
