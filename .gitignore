@@ -3,3 +3,9 @@
 .ipynb_checkpoints/
 outputs/
 main.executed.ipynb
+
+# 대용량 데이터 (GitHub 파일당 100MB 제한). 원본 CSV는 NYC TLC에서 받고,
+# clean.parquet은 02_preprocess.py로 생성한다.
+data/yellow_tripdata_2026-05.csv
+data/yellow_tripdata_2026-05_clean.parquet
+data/h3_analysis_data.csv

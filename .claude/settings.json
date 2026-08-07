@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(.venv/bin/python -)",
+      "Bash(.venv/bin/python -m jupyter nbconvert --to notebook --execute main.ipynb --output main.executed.ipynb --ExecutePreprocessor.timeout=1800 --allow-errors)",
+      "Bash(python3 -c ' *)",
+      "Bash(uv add *)",
+      "Bash(file data/*)",
+      "Bash(uv run *)"
+    ]
+  }
+}
