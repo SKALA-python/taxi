@@ -3,9 +3,25 @@
 .ipynb_checkpoints/
 outputs/
 main.executed.ipynb
+__pycache__/
+.DS_Store
 
 # 대용량 데이터 (GitHub 파일당 100MB 제한). 원본 CSV는 NYC TLC에서 받고,
 # clean.parquet은 02_preprocess.py로 생성한다.
 data/yellow_tripdata_2026-05.csv
 data/yellow_tripdata_2026-05_clean.parquet
 data/h3_analysis_data.csv
+
+# 데이터 (출처만 README에 기록)
+*.parquet
+data/raw/
+data/taxi_zones/
+
+# 실행 산출물
+models/
+산출물.zip
+_bundle/
+
+# data 폴더 전체 (파일명이 바뀌어도 안전하게)
+data/
+!data/.gitkeep
